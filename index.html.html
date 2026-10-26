@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio freelance d'Alyson Caubraque : montage vidéo court, pages web HTML/CSS et mise en forme de documents.">
+  <meta name="theme-color" content="#fff4f8">
+  <title>Alyson Caubraque — Portfolio freelance</title>
+  <style>
+    :root {
+      --bg: #fff8fb;
+      --paper: #ffffff;
+      --ink: #30252d;
+      --muted: #756671;
+      --pink: #d85f91;
+      --pink-dark: #a93868;
+      --pink-light: #ffe5ef;
+      --line: #f1cfdd;
+      --lavender: #f0eaff;
+      --mint: #e8f7f1;
+      --shadow: 0 14px 40px rgba(115, 48, 78, .08);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 5% 3%, rgba(255, 221, 236, .6), transparent 24rem),
+        radial-gradient(circle at 95% 20%, rgba(235, 226, 255, .55), transparent 25rem),
+        var(--bg);
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.65;
+    }
+    a { color: inherit; }
+    .wrap { width: min(1100px, calc(100% - 36px)); margin: 0 auto; }
+    header { padding: 24px 0 12px; }
+    .nav { display: flex; justify-content: space-between; align-items: center; gap: 20px; }
+    .brand { display: flex; align-items: center; gap: 11px; font-weight: 800; letter-spacing: -.03em; }
+    .brand-mark {
+      width: 42px; height: 42px; display: grid; place-items: center;
+      border-radius: 14px; color: white; background: linear-gradient(135deg, #e87eaa, #ba6bd0);
+      box-shadow: 0 8px 18px rgba(216, 95, 145, .25); font-size: 1.15rem;
+    }
+    .nav-links { display: flex; flex-wrap: wrap; gap: 18px; color: var(--muted); font-size: .92rem; }
+    .nav-links a { text-decoration: none; }
+    .nav-links a:hover { color: var(--pink-dark); }
+    .hero { padding: 66px 0 52px; display: grid; grid-template-columns: 1.35fr .8fr; gap: 36px; align-items: center; }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 8px; padding: 7px 12px;
+      border: 1px solid var(--line); border-radius: 999px; color: var(--pink-dark);
+      background: rgba(255,255,255,.78); font-size: .84rem; font-weight: 700;
+    }
+    h1 { margin: 18px 0 16px; font-size: clamp(2.4rem, 5.5vw, 4.5rem); line-height: 1.04; letter-spacing: -.065em; }
+    .accent { color: var(--pink-dark); }
+    .lead { max-width: 640px; font-size: 1.12rem; color: var(--muted); }
+    .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 25px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 12px 17px; border-radius: 13px; text-decoration: none; font-weight: 750; border: 1px solid transparent; transition: transform .18s ease, box-shadow .18s ease; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--pink-dark); color: white; box-shadow: 0 9px 20px rgba(169,56,104,.18); }
+    .btn-secondary { background: white; border-color: var(--line); color: var(--ink); }
+    .mini-note { color: var(--muted); font-size: .86rem; margin-top: 14px; }
+    .profile-card {
+      position: relative; padding: 26px; background: rgba(255,255,255,.82);
+      border: 1px solid var(--line); border-radius: 28px; box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+    .profile-card:before { content: ""; position: absolute; width: 180px; height: 180px; border-radius: 50%; background: var(--pink-light); top: -75px; right: -65px; }
+    .avatar { position: relative; width: 74px; height: 74px; display: grid; place-items: center; border-radius: 23px; background: linear-gradient(135deg, #ffe2ee, #eee5ff); font-size: 2rem; }
+    .profile-card h2 { position: relative; margin: 15px 0 2px; font-size: 1.35rem; }
+    .profile-card p { position: relative; margin: 0; color: var(--muted); }
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 19px; position: relative; }
+    .tag { padding: 6px 10px; border-radius: 999px; background: #fff0f6; color: #8d3b61; font-size: .8rem; font-weight: 700; }
+    section { padding: 34px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 20px; margin-bottom: 22px; }
+    .section-head h2 { margin: 0; font-size: clamp(1.65rem, 3vw, 2.35rem); letter-spacing: -.045em; }
+    .section-head p { margin: 0; color: var(--muted); max-width: 490px; }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .card { background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 23px; box-shadow: var(--shadow); }
+    .icon-box { display: grid; place-items: center; width: 47px; height: 47px; border-radius: 15px; background: var(--pink-light); font-size: 1.35rem; }
+    .card:nth-child(2) .icon-box { background: var(--lavender); }
+    .card:nth-child(3) .icon-box { background: var(--mint); }
+    .card h3 { margin: 15px 0 7px; font-size: 1.14rem; }
+    .card p { margin: 0; color: var(--muted); font-size: .95rem; }
+    .price { display: inline-block; margin-top: 16px; color: var(--pink-dark); font-weight: 800; }
+    .small { display: block; color: var(--muted); font-size: .78rem; font-weight: 500; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .project { overflow: hidden; padding: 0; }
+    .project-visual { min-height: 155px; display: grid; place-items: center; padding: 20px; background: linear-gradient(135deg, #ffe3ef, #f1eaff); }
+    .project:nth-child(2) .project-visual { background: linear-gradient(135deg, #e9e5ff, #e3f5f0); }
+    .project:nth-child(3) .project-visual { background: linear-gradient(135deg, #fff0d9, #ffe3ed); }
+    .mock-window { width: 100%; max-width: 250px; border: 1px solid rgba(91,54,74,.13); border-radius: 12px; background: rgba(255,255,255,.88); padding: 12px; box-shadow: 0 10px 20px rgba(70,30,60,.08); }
+    .mock-dots { display: flex; gap: 4px; margin-bottom: 10px; }
+    .mock-dots i { display: block; width: 6px; height: 6px; border-radius: 50%; background: #e6a3bf; }
+    .mock-line { height: 7px; width: 76%; margin: 7px 0; border-radius: 9px; background: #f3cddd; }
+    .mock-line.short { width: 47%; background: #e4dcf7; }
+    .mock-block { height: 35px; border-radius: 7px; background: #fbeaf1; margin-top: 9px; }
+    .project-body { padding: 20px; }
+    .project-body h3 { margin: 0 0 6px; }
+    .project-body p { margin: 0; color: var(--muted); font-size: .92rem; }
+    .label { display: inline-block; margin-top: 12px; padding: 5px 9px; background: #fff0f6; color: #8d3b61; border-radius: 8px; font-size: .76rem; font-weight: 700; }
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .list { list-style: none; padding: 0; margin: 13px 0 0; }
+    .list li { display: flex; gap: 10px; margin: 10px 0; color: var(--muted); }
+    .check { color: var(--pink-dark); font-weight: 900; }
+    .process { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .step-number { color: var(--pink-dark); font-weight: 900; font-size: .85rem; letter-spacing: .08em; }
+    .step h3 { margin: 8px 0 5px; }
+    .step p { color: var(--muted); margin: 0; font-size: .94rem; }
+    .contact { padding: 32px; border-radius: 28px; background: linear-gradient(120deg, #fff, #fff0f6 65%, #f1eaff); border: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; gap: 24px; box-shadow: var(--shadow); }
+    .contact h2 { margin: 0 0 8px; font-size: clamp(1.6rem, 3vw, 2.3rem); letter-spacing: -.04em; }
+    .contact p { margin: 0; color: var(--muted); }
+    footer { padding: 28px 0 38px; text-align: center; color: var(--muted); font-size: .85rem; }
+    .notice { margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: #fff7e8; color: #72551d; font-size: .85rem; }
+    @media (max-width: 800px) {
+      .hero { grid-template-columns: 1fr; padding-top: 42px; }
+      .profile-card { max-width: 520px; }
+      .grid-3, .portfolio-grid { grid-template-columns: 1fr 1fr; }
+      .section-head { display: block; }
+      .section-head p { margin-top: 8px; }
+      .contact { display: block; }
+      .contact .btn { margin-top: 18px; }
+    }
+    @media (max-width: 560px) {
+      .wrap { width: min(100% - 24px, 1100px); }
+      .nav { align-items: flex-start; flex-direction: column; }
+      .nav-links { gap: 12px; }
+      .hero { padding: 35px 0; }
+      .grid-3, .portfolio-grid, .split, .process { grid-template-columns: 1fr; }
+      .card { padding: 20px; }
+      .contact { padding: 24px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { transition: none !important; }
+    }
+
+    /* Mise en page dédiée à l'impression et à l'export PDF (format A4). */
+    @page { size: A4; margin: 12mm 13mm; }
+    @media print {
+      :root {
+        --bg: #ffffff; --paper: #ffffff; --shadow: none;
+        --line: #e8c4d3; --muted: #5f535b;
+      }
+      html, body { width: auto; background: #fff !important; color: #30252d; font-size: 9.5pt; line-height: 1.42; }
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      .wrap { width: 100%; max-width: none; }
+      header { padding: 0 0 5mm; }
+      .nav { display: block; }
+      .nav-links, .actions { display: none !important; }
+      .brand-mark { box-shadow: none; width: 30px; height: 30px; border-radius: 9px; }
+      .hero { padding: 7mm 0 5mm; grid-template-columns: 1.3fr .8fr; gap: 8mm; }
+      .eyebrow { padding: 4px 8px; font-size: 8pt; }
+      h1 { font-size: 27pt; line-height: 1.04; margin: 8px 0 10px; }
+      .lead { font-size: 10pt; line-height: 1.45; }
+      .mini-note { font-size: 8pt; margin-top: 7px; }
+      .profile-card { padding: 5mm; border-radius: 14px; box-shadow: none; }
+      .profile-card:before { width: 100px; height: 100px; top: -45px; right: -35px; }
+      .avatar { width: 48px; height: 48px; border-radius: 14px; font-size: 1.5rem; }
+      .profile-card h2 { font-size: 13pt; margin-top: 8px; }
+      .tags { gap: 4px; margin-top: 9px; }
+      .tag { padding: 3px 6px; font-size: 7pt; }
+      section { padding: 5mm 0; }
+      .section-head { margin-bottom: 4mm; gap: 8mm; }
+      .section-head h2 { font-size: 18pt; }
+      .section-head p { font-size: 8.5pt; line-height: 1.35; }
+      .grid-3 { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 3mm; }
+      .portfolio-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3mm; }
+      .card { padding: 4mm; border-radius: 10px; box-shadow: none; break-inside: avoid; page-break-inside: avoid; }
+      .icon-box { width: 30px; height: 30px; border-radius: 9px; font-size: 1rem; }
+      .card h3 { font-size: 10pt; margin: 7px 0 4px; }
+      .card p, .project-body p, .step p { font-size: 8pt; line-height: 1.38; }
+      .price { margin-top: 7px; font-size: 9pt; }
+      .small { font-size: 7pt; }
+      .notice { margin-top: 3mm; padding: 2.5mm; font-size: 7.5pt; }
+      .project-visual { min-height: 28mm; padding: 3mm; }
+      .mock-window { padding: 7px; }
+      .project-body { padding: 3mm; }
+      .project-body h3 { font-size: 9pt; }
+      .label { font-size: 6.5pt; padding: 3px 5px; margin-top: 6px; }
+      .split { grid-template-columns: 1fr 1fr; gap: 3mm; }
+      .list { margin-top: 5px; }
+      .list li { gap: 6px; margin: 5px 0; font-size: 8pt; line-height: 1.35; }
+      .process { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 3mm; margin-top: 3mm !important; }
+      .step-number { font-size: 7pt; }
+      .step h3 { font-size: 9pt; margin: 5px 0 3px; }
+      .contact { padding: 5mm; border-radius: 12px; box-shadow: none; gap: 5mm; }
+      .contact h2 { font-size: 16pt; }
+      .contact p { font-size: 8.5pt; }
+      .contact .btn { display: none; }
+      footer { padding: 4mm 0 0; font-size: 7pt; }
+      footer p { margin: 3px 0; }
+      #portfolio { break-before: page; page-break-before: always; }
+      #apropos { break-before: page; page-break-before: always; }
+      #contact { break-before: auto; page-break-before: auto; }
+      a { text-decoration: none; }
+      a[href^="mailto:"]::after { content: ""; }
+    }
+  </style>
+</head>
+<body>
+  <header class="wrap">
+    <nav class="nav" aria-label="Navigation principale">
+      <a class="brand" href="#accueil" style="text-decoration:none">
+        <span class="brand-mark">A✿</span>
+        <span>Alyson Caubraque</span>
+      </a>
+      <div class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#portfolio">Portfolio</a>
+        <a href="#apropos">À propos</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="wrap hero" id="accueil">
+      <div>
+        <span class="eyebrow">✦ Services numériques à distance</span>
+        <h1>Des idées bien présentées, <span class="accent">jusqu’au dernier détail.</span></h1>
+        <p class="lead">Je vous aide à mettre en valeur vos projets avec des vidéos courtes, des pages web simples et des documents clairs et soignés.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#services">Découvrir mes services <span aria-hidden="true">↗</span></a>
+          <a class="btn btn-secondary" href="#contact">Me contacter</a>
+        </div>
+        <p class="mini-note">À distance · Échanges principalement par écrit · Petites missions définies à l’avance</p>
+      </div>
+      <aside class="profile-card" aria-label="Présentation">
+        <div class="avatar" aria-hidden="true">🌸</div>
+        <h2>Alyson Caubraque</h2>
+        <p>Création numérique & support visuel</p>
+        <div class="tags">
+          <span class="tag">Montage vidéo</span>
+          <span class="tag">HTML / CSS</span>
+          <span class="tag">Word & PowerPoint</span>
+          <span class="tag">Organisation</span>
+        </div>
+      </aside>
+    </section>
+
+    <section class="wrap" id="services">
+      <div class="section-head">
+        <h2>Mes services</h2>
+        <p>Des prestations simples et personnalisables, avec un périmètre et un tarif convenus avant de commencer.</p>
+      </div>
+      <div class="grid-3">
+        <article class="card">
+          <div class="icon-box" aria-hidden="true">🎬</div>
+          <h3>Montage de vidéos courtes</h3>
+          <p>Découpage, rythme, transitions simples et mise en forme pour TikTok, Reels ou Shorts, à partir des éléments fournis.</p>
+          <span class="price">À partir de 10 € <span class="small">Exemple de tarif de lancement</span></span>
+        </article>
+        <article class="card">
+          <div class="icon-box" aria-hidden="true">📸</div>
+          <h3>Montage et retouche photo</h3>
+          <p>Assemblage de plusieurs photos, collages, compositions esthétiques, recadrage et ajustements simples pour vos réseaux sociaux ou projets personnels.</p>
+          <span class="price">À partir de 8 € <span class="small">Exemple de tarif de lancement</span></span>
+        </article>
+        <article class="card">
+          <div class="icon-box" aria-hidden="true">💻</div>
+          <h3>Page web HTML / CSS</h3>
+          <p>Une page de présentation responsive pour un projet, un portfolio ou une petite activité. Sans boutique ni base de données.</p>
+          <span class="price">À partir de 25 € <span class="small">Exemple de tarif de lancement</span></span>
+        </article>
+        <article class="card">
+          <div class="icon-box" aria-hidden="true">📄</div>
+          <h3>Mise en page de documents</h3>
+          <p>Présentation claire de documents Word, de diapositives PowerPoint ou de tableaux simples, selon vos consignes.</p>
+          <span class="price">À partir de 10 € <span class="small">Exemple de tarif de lancement</span></span>
+        </article>
+      </div>
+      <div class="notice">Les prix affichés sont des exemples à ajuster selon le contenu, le délai, les retouches demandées et les frais de la plateforme.</div>
+    </section>
+
+    <section class="wrap" id="portfolio">
+      <div class="section-head">
+        <h2>Exemples de réalisations</h2>
+        <p>Des emplacements prévus pour montrer concrètement votre savoir-faire. Remplacez ces maquettes par vos propres créations avant de démarcher des clients.</p>
+      </div>
+      <div class="portfolio-grid">
+        <article class="card project">
+          <div class="project-visual" aria-hidden="true">
+            <div class="mock-window">
+              <div class="mock-dots"><i></i><i></i><i></i></div>
+              <div class="mock-line"></div><div class="mock-line short"></div><div class="mock-block"></div>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>Vidéo courte</h3>
+            <p>Insérez ici un montage personnel de 15 à 30 secondes, réalisé avec des médias que vous avez le droit d’utiliser.</p>
+            <span class="label">À compléter avec un exemple</span>
+          </div>
+        </article>
+        <article class="card project">
+          <div class="project-visual" aria-hidden="true">
+            <div class="mock-window">
+              <div class="mock-dots"><i></i><i></i><i></i></div>
+              <div class="mock-line short"></div><div class="mock-line"></div><div class="mock-block"></div>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>Montage photo</h3>
+            <p>Ajoutez un collage, une composition ou un avant/après réalisé avec des photos que vous êtes autorisée à utiliser.</p>
+            <span class="label">À compléter avec un exemple</span>
+          </div>
+        </article>
+        <article class="card project">
+          <div class="project-visual" aria-hidden="true">
+            <div class="mock-window">
+              <div class="mock-dots"><i></i><i></i><i></i></div>
+              <div class="mock-line"></div><div class="mock-line short"></div><div class="mock-line"></div><div class="mock-block"></div>
+            </div>
+          </div>
+          <div class="project-body">
+            <h3>Document mis en page</h3>
+            <p>Montrez un exemple anonymisé de CV, de présentation ou de tableau, avec les données personnelles masquées.</p>
+            <span class="label">À compléter avec un exemple</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="apropos">
+      <div class="section-head">
+        <h2>À propos</h2>
+        <p>Une approche attentive, organisée et transparente pour les petites missions numériques.</p>
+      </div>
+      <div class="split">
+        <article class="card">
+          <h3>Ma façon de travailler</h3>
+          <ul class="list">
+            <li><span class="check">✓</span><span>Des consignes et un périmètre définis avant de commencer.</span></li>
+            <li><span class="check">✓</span><span>Une communication principalement par message ou e-mail.</span></li>
+            <li><span class="check">✓</span><span>Des fichiers organisés et remis dans le format convenu.</span></li>
+            <li><span class="check">✓</span><span>Une estimation du délai et des éventuelles retouches dès le départ.</span></li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>Outils & compétences</h3>
+          <ul class="list">
+            <li><span class="check">✦</span><span>HTML / CSS : pages web simples et mise en page responsive.</span></li>
+            <li><span class="check">✦</span><span>Outils bureautiques : documents, tableaux et présentations.</span></li>
+            <li><span class="check">✦</span><span>Montage vidéo et photo : compositions, recadrage et effets simples selon les outils maîtrisés.</span></li>
+            <li><span class="check">✦</span><span>Français et anglais : communication et contenus selon le niveau et la demande.</span></li>
+          </ul>
+          <p class="mini-note">Ne gardez que les compétences que vous pouvez démontrer et précisez les logiciels que vous maîtrisez réellement.</p>
+        </article>
+      </div>
+      <div class="process" style="margin-top:16px">
+        <article class="card step">
+          <span class="step-number">ÉTAPE 01</span>
+          <h3>Vous m’expliquez le besoin</h3>
+          <p>Vous envoyez les consignes, les fichiers utiles et le délai souhaité par écrit.</p>
+        </article>
+        <article class="card step">
+          <span class="step-number">ÉTAPE 02</span>
+          <h3>Nous validons le devis</h3>
+          <p>Le prix, le livrable, le délai et le nombre de retouches sont définis avant le début.</p>
+        </article>
+        <article class="card step">
+          <span class="step-number">ÉTAPE 03</span>
+          <h3>Je livre le résultat</h3>
+          <p>Vous recevez les fichiers convenus et pouvez vérifier le résultat selon les conditions fixées.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="wrap" id="contact">
+      <div class="contact">
+        <div>
+          <h2>Vous avez un petit projet ? 🌷</h2>
+          <p>Décrivez votre besoin par e-mail. Je vous répondrai pour vérifier si la mission correspond à mes services.</p>
+          <p class="mini-note">E-mail : alyson.caubraque@yahoo.com</p>
+        </div>
+        <a class="btn btn-primary" href="mailto:alyson.caubraque@yahoo.com?subject=Demande%20de%20prestation">Envoyer un e-mail ↗</a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="wrap">
+    <p>© <span id="year">2026</span> Alyson Caubraque · Portfolio freelance</p>
+    <p>Portfolio de présentation — les exemples et tarifs sont à personnaliser avant publication.</p>
+  </footer>
+  <script>
+    // Met à jour automatiquement l'année dans le pied de page.
+    document.getElementById("year").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
